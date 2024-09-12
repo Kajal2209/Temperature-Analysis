@@ -8,6 +8,10 @@ import {
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
+import {
+  noFutureDateValidator,
+  temperatureRangeValidator,
+} from '../../custom.validator';
 
 @Component({
   selector: 'app-add-data',
@@ -26,8 +30,15 @@ export class AddDataComponent implements OnInit {
     private router: Router
   ) {
     this.dataForm = this.fb.group({
-      temperature: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // Numeric validation
-      datetime: ['', Validators.required], // Required validation
+      temperature: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]*$'),
+          temperatureRangeValidator,
+        ],
+      ], // Numeric validation
+      datetime: ['', [Validators.required, noFutureDateValidator]], // Required validation
     });
   }
 

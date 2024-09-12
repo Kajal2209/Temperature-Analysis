@@ -11,6 +11,8 @@
                     class="text-red-500">
                     <small *ngIf="dataForm.get('temperature')?.errors?.['required']">Temperature is required.</small>
                     <small *ngIf="dataForm.get('temperature')?.errors?.['pattern']">Temperature must be numeric.</small>
+                    <small *ngIf="dataForm.get('temperature')?.errors?.['temperatureRange']">Temperature must be between
+                        -50 and 50 degrees Celsius.</small>
                 </div>
             </div>
             <div class="mb-4">
@@ -20,6 +22,8 @@
                 <div *ngIf="dataForm.get('datetime')?.invalid && dataForm.get('datetime')?.touched"
                     class="text-red-500">
                     <small *ngIf="dataForm.get('datetime')?.errors?.['required']">Date & Time is required.</small>
+                    <small *ngIf="dataForm.get('datetime')?.errors?.['futureDate']">Date & Time cannot be in the
+                        future.</small>
                 </div>
             </div>
             <div class="mb-4">
