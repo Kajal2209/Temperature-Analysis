@@ -5,11 +5,11 @@
       <img src="temp.png" class="h-24 w-24 ml-4">
     </h1>
     <p class="text-green-300 text-lg mt-4 font-bold"> --> code by Kajal Paliwal</p>
-    <div class="pt-14 flex justify-start w-full"> <!-- Flex container -->
-      <div class="w-1/2 p-4 flex-grow"> <!-- Left side: Add Data -->
+    <div class="pt-14 flex flex-col md:flex-row justify-start w-full"> <!-- Flex container with responsive classes -->
+      <div class="w-full md:w-1/2 p-4 flex-grow"> <!-- Left side: Add Data -->
         <app-add-data></app-add-data>
       </div>
-      <div class="w-1/2 p-4 flex-grow"> <!-- Right side: View Data -->
+      <div class="w-full md:w-1/2 p-4 flex-grow"> <!-- Right side: View Data -->
         <app-view-data></app-view-data>
       </div>
     </div>
