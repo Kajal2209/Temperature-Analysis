@@ -1,0 +1,56 @@
+<div class="border-4 border-green-500 rounded-2xl flex pt-5 w-full">
+    <!-- Left side: Form -->
+    <div class="w-3/4 p-4">
+        <div class="text-green-400 font-bold text-2xl mb-6">Add Data</div>
+        <form [formGroup]="dataForm" (ngSubmit)="addData()">
+            <div class="mb-4">
+                <label for="temperature" class="block font-bold text-lg text-blue-400 mb-5">Temperature</label>
+                <input type="text" id="temperature" formControlName="temperature"
+                    class="mt-1 block w-full border-green-700 rounded-md shadow-md shadow-green-300">
+                <div *ngIf="dataForm.get('temperature')?.invalid && dataForm.get('temperature')?.touched"
+                    class="text-red-500">
+                    <small *ngIf="dataForm.get('temperature')?.errors?.['required']">Temperature is required.</small>
+                    <small *ngIf="dataForm.get('temperature')?.errors?.['pattern']">Temperature must be numeric.</small>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="datetime" class="block font-bold text-lg text-blue-400 mb-5">Date & Time</label>
+                <input type="datetime-local" id="datetime" formControlName="datetime"
+                    class="mt-1 block w-full border-green-700 rounded-md shadow-md shadow-green-300">
+                <div *ngIf="dataForm.get('datetime')?.invalid && dataForm.get('datetime')?.touched"
+                    class="text-red-500">
+                    <small *ngIf="dataForm.get('datetime')?.errors?.['required']">Date & Time is required.</small>
+                </div>
+            </div>
+            <div class="mb-4">
+                <button type="submit"
+                    class="px-8 py-2 rounded-full relative bg-slate-700 text-green-500 text-sm hover:shadow-2xl hover:shadow-white/[0.1] transition duration-200 border border-slate-600">
+                    <div
+                        class="absolute inset-x-0 h-px w-1/2 mx-auto -top-px shadow-2xl  bg-gradient-to-r from-transparent via-teal-500 to-transparent">
+                    </div>
+                    <span class="relative z-20">
+                        Add Data
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="border-l-2 border-green-500 mx-4"></div>
+
+    <!-- Right side: Data display -->
+    <div class="w-1/2 p-4">
+        <div class="text-green-400 font-bold text-2xl">Entered Data</div>
+
+        <div class="mt-9">
+            <div *ngFor="let entry of dataEntries" class="mb-4">
+                <p class="text-green-400 font-semibold"><strong>Temperature:</strong><span class="text-violet-400"> {{
+                        entry.temperature }}</span></p>
+                <p class="text-green-400 font-semibold"><strong>Date & Time:</strong><span class="text-violet-400"> {{
+                        entry.datetime }}</span></p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
